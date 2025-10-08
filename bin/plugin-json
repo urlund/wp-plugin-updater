@@ -31,10 +31,10 @@ if (!$autoloaderFound) {
     // The script will work standalone
 }
 
-use Urlund\WpPluginUpdater\PluginJsonGenerator;
+use Urlund\WordPress\PluginUpdater\PluginJsonGenerator;
 
 // If the class is not autoloaded, load it inline
-if (!class_exists('Urlund\WpPluginUpdater\PluginJsonGenerator')) {
+if (!class_exists('Urlund\WordPress\PluginUpdater\PluginJsonGenerator')) {
     require_once __DIR__ . '/../src/PluginJsonGenerator.php';
 }
 
