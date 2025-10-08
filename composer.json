@@ -19,7 +19,6 @@
         "bin/plugin-zip"
     ],
     "scripts": {
-        "generate-json": "bin/plugin-json",
         "plugin-json": "bin/plugin-json",
         "plugin-zip": "bin/plugin-zip"
     },
