@@ -6,7 +6,7 @@
     "license": "GPLv2",
     "autoload": {
         "psr-4": {
-            "Urlund\\WpPluginUpdater\\": "src/"
+            "Urlund\\WordPress\\PluginUpdater\\": "src/"
         }
     },
     "authors": [
