@@ -6,7 +6,7 @@ namespace Urlund\WordPress\PluginUpdater;
  * Abstract class for a plugin repository.
  * Defines the methods that any plugin repository implementation must provide.
  */
-abstract class AbstractPluginRepository
+abstract class AbstractRepository
 {
     /**
      * Handle the plugins_api filter to provide plugin information.

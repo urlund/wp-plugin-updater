@@ -4,9 +4,9 @@ namespace Urlund\WordPress\PluginUpdater;
 
 /*
  * Class for a GitHub-based plugin repository.
- * Extends the AbstractPluginRepository to provide GitHub-specific implementations.
+ * Extends the AbstractRepository to provide GitHub-specific implementations.
  */
-class GitHubPluginRepository extends AbstractPluginRepository
+class GitHubRepository extends AbstractRepository
 {
     /**
      * GitHub personal access token.
