@@ -183,6 +183,14 @@ class PluginZipPackager
         // Generate output filename
         $outputFile = $this->generateOutputFilename($pluginName, $version);
         
+        // Ensure output directory exists
+        $outputDir = dirname($outputFile);
+        if (!is_dir($outputDir)) {
+            if (!mkdir($outputDir, 0755, true)) {
+                throw new Exception("Cannot create output directory: " . $outputDir);
+            }
+        }
+        
         // Get list of files to include
         $filesToInclude = $this->getFilesToInclude($sourceDir);
         
@@ -221,9 +229,27 @@ class PluginZipPackager
     private function generateOutputFilename($pluginName, $version = '')
     {
         if (isset($this->options['output'])) {
-            return $this->options['output'];
+            $outputPath = $this->options['output'];
+            
+            // If output path ends with .zip, use it as complete file path
+            if (strtolower(substr($outputPath, -4)) === '.zip') {
+                return $outputPath;
+            }
+            
+            // Otherwise, treat it as a directory and generate filename inside it
+            $filename = $pluginName;
+            if (!empty($version)) {
+                $filename .= '-' . $version;
+            }
+            $filename .= '.zip';
+            
+            // Ensure directory path ends with separator
+            $outputPath = rtrim($outputPath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+            
+            return $outputPath . $filename;
         }
 
+        // Default behavior when no output specified
         $filename = $pluginName;
         if (!empty($version)) {
             $filename .= '-' . $version;
