@@ -4,12 +4,12 @@
  * 
  * A class to generate plugin.json metadata files from WordPress plugin headers.
  * 
- * @package Urlund\WpPluginUpdater
+ * @package Urlund\WordPress\PluginUpdater
  * @author Henrik Urlund
  * @version 1.0.0
  */
 
-namespace Urlund\WpPluginUpdater;
+namespace Urlund\WordPress\PluginUpdater;
 
 use Exception;
 

@@ -1,7 +1,11 @@
 <?php
 
-namespace Urlund\WpPluginUpdater;
+namespace Urlund\WordPress\PluginUpdater;
 
+/*
+ * Class for a GitHub-based plugin repository.
+ * Extends the AbstractPluginRepository to provide GitHub-specific implementations.
+ */
 class GitHubPluginRepository extends AbstractPluginRepository
 {
     /**

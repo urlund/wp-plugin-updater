@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Urlund\\WpPluginUpdater\\' => array($baseDir . '/src'),
+    'Urlund\\WordPress\\PluginUpdater\\' => array($baseDir . '/src'),
 );

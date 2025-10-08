@@ -1,6 +1,6 @@
 <?php
 
-namespace Urlund\WpPluginUpdater;
+namespace Urlund\WordPress\PluginUpdater;
 
 /*
  * Abstract class for a plugin repository.
