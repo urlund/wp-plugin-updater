@@ -73,7 +73,7 @@ class GitHubRepository extends AbstractRepository
      *     @type int    $max_file_size  Optional. Maximum ZIP file size in bytes. Default 52428800 (50MB).
      * }
      */
-    public function __construct($plugin, $repository, $config = array())
+    protected function __construct($plugin, $repository, $config = array())
     {
         $this->plugin     = $plugin;
         $this->repository = $repository;
