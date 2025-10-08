@@ -363,7 +363,7 @@ class PluginJsonGenerator
             }
             
             // Otherwise, treat it as a directory and generate filename inside it
-            $filename = $this->getPluginSlug($metadata);
+            $filename = 'plugin';
             $version = $this->options['version'] ?? '';
             
             if (!empty($version)) {
