@@ -378,7 +378,7 @@ class PluginJsonGenerator
         }
 
         // Default behavior when no output specified
-        $filename = $this->getPluginSlug($metadata);
+        $filename = 'plugin';
         $version = $this->options['version'] ?? '';
         
         if (!empty($version)) {
@@ -435,7 +435,7 @@ class PluginJsonGenerator
         echo "Required Options:\n";
         echo "  --plugin=FILE          Path to the main plugin PHP file\n\n";
         echo "Optional Options:\n";
-        echo "  --output=PATH          Output file path or directory (default: plugin-slug.json)\n";
+        echo "  --output=PATH          Output file path or directory (default: plugin.json)\n";
         echo "                         If ends with .json: complete file path\n";
         echo "                         Otherwise: directory to place generated file\n";
         echo "  --version=STRING       Version to append to filename (when using directory output)\n";
