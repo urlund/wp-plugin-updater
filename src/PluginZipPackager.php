@@ -48,13 +48,7 @@ class PluginZipPackager
         
         // Development directories
         'node_modules',
-        'tests',
-        'test',
         '.github',
-        'docs',
-        'documentation',
-        'build-tools',
-        'dev-tools',
         
         // IDE files
         '.vscode',
@@ -80,8 +74,6 @@ class PluginZipPackager
         '*.tmp',
         '*.temp',
         '.cache',
-        'tmp',
-        'temp',
         
         // Development configs
         '.env',
@@ -93,12 +85,6 @@ class PluginZipPackager
         '.editorconfig',
         '.stylelintrc',
         '.eslintrc',
-        
-        // WordPress specific
-        'wp-config.php',
-        'wp-content',
-        'wp-admin',
-        'wp-includes'
     );
 
     /**
