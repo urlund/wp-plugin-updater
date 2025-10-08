@@ -47,7 +47,6 @@ class PluginZipPackager
         'tsconfig.json',
         
         // Development directories
-        'vendor',
         'node_modules',
         'tests',
         'test',
