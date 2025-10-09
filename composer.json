@@ -16,7 +16,8 @@
     ],
     "bin": [
         "bin/plugin-json",
-        "bin/plugin-zip"
+        "bin/plugin-zip",
+        "bin/plugin-publish"
     ],
     "scripts": {
         "plugin-json": "bin/plugin-json",
