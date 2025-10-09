@@ -107,10 +107,10 @@ class PluginVersionBump
             $found = false;
             $oldVersion = null;
             foreach ($lines as $i => $line) {
-                if (preg_match('/^\s*\*?\s*Version:\s*(.+)$/i', $line, $m)) {
-                    $oldVersion = trim($m[1]);
-                    // Use double quotes so $1 is expanded and $version is interpolated
-                    $lines[$i] = preg_replace('/(^\s*\*?\s*Version:\s*)(.+)$/i', "$1$version", $line);
+                if (preg_match('/^(\s*\*?\s*Version:\s*)(.+)$/i', $line, $m)) {
+                    $oldVersion = trim($m[2]);
+                    // Replace the line with the prefix + new version
+                    $lines[$i] = $m[1] . $version . "\n";
                     $found = true;
                     break;
                 }
