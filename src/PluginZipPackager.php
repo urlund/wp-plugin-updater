@@ -50,7 +50,7 @@ class PluginZipPackager
         'node_modules',
         '.github',
         'vendor/bin',
-        'vendor/*/bin',
+        'vendor/**/bin',
         
         // IDE files
         '.vscode',
