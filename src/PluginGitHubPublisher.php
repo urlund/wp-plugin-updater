@@ -26,20 +26,20 @@ class PluginGitHubPublisher
                 throw new \Exception("No version found in plugin.json");
             }
             $tag = 'v' . $version;
-            // If plugin.json contains sha512, validate it
-            if (!empty($jsonData['sha512'])) {
-                $actualSha = hash_file('sha512', $this->options['zip']);
-                if (strtolower($jsonData['sha512']) !== strtolower($actualSha)) {
-                    throw new \Exception("SHA-512 mismatch: plugin.json has {$jsonData['sha512']}, but zip file is $actualSha");
+            // If plugin.json contains sha256, validate it
+            if (!empty($jsonData['sha256'])) {
+                $actualSha = hash_file('sha256', $this->options['zip']);
+                if (strtolower($jsonData['sha256']) !== strtolower($actualSha)) {
+                    throw new \Exception("SHA-256 mismatch: plugin.json has {$jsonData['sha256']}, but zip file is $actualSha");
                 }
-                $this->info("SHA-512 validated for zip file");
+                $this->info("SHA-256 validated for zip file");
             }
             $release = $this->findRelease($version);
             if (!$release) {
-                $this->error("No draft release found for tag $tag");
+                $this->error("No release found for tag $tag");
                 exit(1);
             }
-            $this->info("Found draft release for tag $tag (ID: {$release['id']})");
+            $this->info("Found release for tag $tag (ID: {$release['id']})");
             $this->info("Uploading ZIP asset to release $tag");
             $this->uploadAsset($release['id'], $this->options['zip']);
             $this->success("Uploaded ZIP asset to release $tag");
