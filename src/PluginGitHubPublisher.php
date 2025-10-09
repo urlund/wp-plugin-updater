@@ -41,7 +41,9 @@ class PluginGitHubPublisher
             }
             $this->info("Found draft release for tag $tag (ID: {$release['id']})");
             $this->uploadAsset($release['id'], $this->options['zip']);
-            $this->success("Uploaded asset to release $tag");
+            $this->info("Uploaded ZIP asset to release $tag");
+            $this->uploadAsset($release['id'], $this->options['json']);
+            $this->success("Uploaded plugin.json to release $tag");
         } catch (\Exception $e) {
             $this->error($e->getMessage());
             exit(1);
@@ -127,9 +129,23 @@ class PluginGitHubPublisher
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_USERAGENT, 'GitHubReleasePublisher');
+
+        // Determine Content-Type based on file extension
+        $ext = strtolower(pathinfo($zipPath, PATHINFO_EXTENSION));
+        switch ($ext) {
+            case 'zip':
+                $contentType = 'application/zip';
+                break;
+            case 'json':
+                $contentType = 'application/json';
+                break;
+            default:
+                $contentType = 'application/octet-stream';
+        }
+
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'Authorization: token ' . $this->getToken(),
-            'Content-Type: application/zip',
+            'Content-Type: ' . $contentType,
             'Accept: application/vnd.github+json',
         ]);
         curl_setopt($ch, CURLOPT_POST, true);
