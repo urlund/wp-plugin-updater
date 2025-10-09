@@ -20,8 +20,20 @@ class PluginGitHubPublisher
     {
         try {
             $this->validateOptions();
-            $version = $this->getVersionFromJson($this->options['json']);
+            $jsonData = json_decode(file_get_contents($this->options['json']), true);
+            $version = $jsonData['version'] ?? null;
+            if (!$version) {
+                throw new \Exception("No version found in plugin.json");
+            }
             $tag = 'v' . $version;
+            // If plugin.json contains sha512, validate it
+            if (!empty($jsonData['sha512'])) {
+                $actualSha = hash_file('sha512', $this->options['zip']);
+                if (strtolower($jsonData['sha512']) !== strtolower($actualSha)) {
+                    throw new \Exception("SHA-512 mismatch: plugin.json has {$jsonData['sha512']}, but zip file is $actualSha");
+                }
+                $this->info("SHA-512 validated for zip file");
+            }
             $release = $this->findDraftRelease($version);
             if (!$release) {
                 $this->error("No draft release found for tag $tag");
