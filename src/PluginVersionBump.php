@@ -109,8 +109,8 @@ class PluginVersionBump
             foreach ($lines as $i => $line) {
                 if (preg_match('/^\s*\*?\s*Version:\s*(.+)$/i', $line, $m)) {
                     $oldVersion = trim($m[1]);
-                    // Replace whatever is after 'Version:' with the new version
-                    $lines[$i] = preg_replace('/(^\s*\*?\s*Version:\s*)(.+)$/i', '$1' . $version, $line);
+                    // Use double quotes so $1 is expanded and $version is interpolated
+                    $lines[$i] = preg_replace('/(^\s*\*?\s*Version:\s*)(.+)$/i', "$1$version", $line);
                     $found = true;
                     break;
                 }
